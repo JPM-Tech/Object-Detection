@@ -2,13 +2,12 @@
 
 ## Step 1. Download this repo
 Once the repo is downloaded to your local machine, use your terminal to "cd" into the repos location on your computer.
-**Hint**
+### Hint
 If you use a Mac, type
 ```
 cd
 ```
 into the terminal, then drag and drop the folder for the repo onto the terminal
-**Hint**
 
 ## Step 2. Run the script
 Note: This requires that you have Conda installed
