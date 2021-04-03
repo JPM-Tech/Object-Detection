@@ -9,13 +9,13 @@ Once you know the specific tags/classes that you want to use to train an object 
 
 ## Step 1. Download this repo
 Once the repo is downloaded to your local machine, use your terminal to "cd" into the repos location on your computer.
---------Hint--------
+*Hint*
 If you use a Mac, type
 ```
 cd
 ```
 into the terminal, then drag and drop the folder for the repo onto the terminal
---------Hint--------
+*Hint*
 
 ## Step 2. Run the script
 In your terminal, run the following command
@@ -25,9 +25,9 @@ python3 collect-data-from-Googles-Open-Images-Dataset.py
 
 It will ask you for the class name from the Open Images Dataset (Object Name), followed by the name that will be displayed in your model once the detector has been trained (Display Name).
 
---- IMPORTANT! ---
+*IMPORTANT!*
 The Display Name cannot have spaces or special characters in it!
---- IMPORTANT! ---
+*IMPORTANT!*
 
 Once you have entered all the name of the objects you want to detect in your model, the script will ask how many images you want to using for training. It will automatically download the images needed to validate how the training is running.
 
