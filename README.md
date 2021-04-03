@@ -1,10 +1,10 @@
 # I want to create an object detection model from...
 
-[O  Images that I have taken and labeled myself](https://github.com/JPM-Tech/Object-Detection/tree/master/Pre-Processing/From-My-Own-Labeled-Data)
+[Images that I have taken and labeled myself](https://github.com/JPM-Tech/Object-Detection/tree/master/Pre-Processing/From-My-Own-Labeled-Data)
 
 OR
 
-[O  Images that I found using Googles Open Images Dataset](https://github.com/JPM-Tech/Object-Detection/tree/master/Pre-Processing/From-Open-Images-Dataset)
+[Images that I found using Googles Open Images Dataset](https://github.com/JPM-Tech/Object-Detection/tree/master/Pre-Processing/From-Open-Images-Dataset)
 
 
 
