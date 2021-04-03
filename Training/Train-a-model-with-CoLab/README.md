@@ -11,18 +11,17 @@ Inside the "yolov4" folder, create another folder named
 backup
 ```
 
-Then drag and Drop the files from the 
+Then drag and Drop the files from your local folder 
 ```
 upload_these_files_to_google_drive
 ```
-folder from your computer, into the
+into the folder on Google Drive named
 ```
 yolov4
 ```
-folder on Google Drive.
 
 ## Step 2. Add the CoLab Notebook into your CoLab Session
-You can use the Notebook linked [here](https://github.com/JPM-Tech/Object-Detection/tree/master/From-Open-Images-Dataset/Training/Train-a-model-with-CoLab/Notebook-to-be-used-in-Google-CoLab.ipynb) that has been setup to train an object detection model.
+You can use the Notebook linked [here](https://colab.research.google.com/github/JPM-Tech/Object-Detection/blob/main/Training/Train-a-model-with-CoLab/Notebook-to-be-used-in-Google-CoLab.ipynb) that has been setup to train an object detection model.
 
 ## Step 3: Enable GPU Training
 In the CoLab Menu:
