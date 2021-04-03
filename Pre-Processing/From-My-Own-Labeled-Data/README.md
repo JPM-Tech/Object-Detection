@@ -21,13 +21,13 @@ train
 
 ## Step 1. Download this repo
 Once the repo is downloaded to your local machine, use your terminal to "cd" into the repos location on your computer.
-*Hint*
+**Hint**
 If you use a Mac, type
 ```
 cd
 ```
 into the terminal, then drag and drop the folder for the repo onto the terminal
-*Hint*
+**Hint**
 
 ## Step 2. Run the script
 In your terminal, run the following command
@@ -37,10 +37,10 @@ python3 create-files-from-my-own-data.py
 
 It will ask you for the class name that are in your data set (Object Name).
 
-*IMPORTANT!*
+**IMPORTANT!**
 The Object Name cannot have spaces or special characters in it!
 (I Assume you know that if you are labeling your own data)
-*IMPORTANT!*
+**IMPORTANT!**
 
 After the classes have been entered, it will ask you for the path to the folders holding the training images and labels.
 This should look something like
