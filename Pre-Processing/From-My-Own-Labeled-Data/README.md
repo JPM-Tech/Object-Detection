@@ -1,23 +1,10 @@
 # Creating An Object Detection Model Using Images That I Collected And Labeled Myself
 
-First things first, make sure the labels are in the correct Yolo format.
-The label file should look similar the following example for our example image:
-IMG_1234.txt
+First, make sure the labels are in the correct Yolo format.
+The label file should look similar the following example for our example image (IMG_1234.txt):
 ```
 0 0.222470 0.349206 0.059524 0.039683
 ```
-
-Next move the files that you will use for training into a folder named
-```
-obj
-```
-(this should include the images and corresponding label files)
-
-Then move 20% to 30% of the images from the training folder into another folder named
-```
-train
-```
-(this should include the images and corresponding label files)
 
 ## Step 1. Download this repo
 Once the repo is downloaded to your local machine, use your terminal to "cd" into the repos location on your computer.
