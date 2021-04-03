@@ -35,8 +35,8 @@ Click "Runtime"
 Then "Run All"
 The following steps will automatically take place in the notebook
 
-## Step 5: Google CoLab Code
-The following is a copy of the code used in the CoLab Notebook. The Notebook can also be found [here](https://github.com/JPM-Tech/Object-Detection/tree/master/From-Open-Images-Dataset/Training/Train-a-model-with-CoLab/Notebook-to-be-used-in-Google-CoLab.ipynb)
+## Google CoLab Code
+In case you want to view the code before using the notebook, the following is a copy of the code used in the CoLab Notebook. The Notebook can be found [here](https://colab.research.google.com/github/JPM-Tech/Object-Detection/blob/main/Training/Train-a-model-with-CoLab/Notebook-to-be-used-in-Google-CoLab.ipynb).
 
 ```py
 #clone darknet repo
