@@ -10,8 +10,7 @@ upload_to_google_folder_path = "upload_these_files_to_google_drive"
 new_filter_number = 0
 new_class_number = 0
 
-print("\nEnter a name of an object from the Open Images Dataset that you want to download, then")
-print("enter a name that will be used to display results (NO SPACES), then press Enter to continue")
+print("\nEnter a name of an object from your classes.txt (that should be in the same folder as the labeled images), then")
 while True:
   entry = input("\nObject Name (q to quit): ")
   if entry.lower() == 'q' or entry.lower == '':
@@ -27,8 +26,8 @@ validation_folder_path = input("Validation Path: ")
 print("Creating zip files")
 # Zip the image folders
 # to_location, filetype, from_location
-shutil.make_archive(upload_to_google_folder_path + "/obj", "zip", training_folder_path)
-shutil.make_archive(upload_to_google_folder_path + "/test", "zip", validation_folder_path)
+shutil.make_archive(upload_to_google_folder_path + "/obj", "zip", training_folder_path.rstrip())
+shutil.make_archive(upload_to_google_folder_path + "/test", "zip", validation_folder_path.rstrip())
 
 #move into the folder where we will store all the files that will be uploaded to google drive
 os.chdir(upload_to_google_folder_path)
@@ -59,9 +58,9 @@ number_of_steps = str(min_steps) + "," + str(max_steps)
 print("Creating config file ")
 with open('yolov4-obj.cfg', 'w') as f:
   f.write("[net]\nbatch=64\nsubdivisions=16\nwidth=416\nheight=416\nchannels=3\nmomentum=0.949\ndecay=0.0005\nangle=0\nsaturation = 1.5\nexposure = 1.5\nhue=.1\nlearning_rate=0.001\nburn_in=1000\n")
-  f.write("max_batches = " + max_batches + "\n")
+  f.write("max_batches = " + str(max_batches) + "\n")
   f.write("policy=steps\n")
-  f.write("steps=" + number_of_steps + "\n")
+  f.write("steps=" + str(number_of_steps) + "\n")
   f.write("scales=.1,.1\n\nmosaic=1\n[convolutional]\nbatch_normalize=1\nfilters=32\nsize=3\nstride=1\npad=1\nactivation=mish\n[convolutional]\nbatch_normalize=1\nfilters=64\nsize=3\nstride=2\npad=1\nactivation=mish\n[convolutional]\nbatch_normalize=1\nfilters=64\nsize=1\nstride=1\npad=1\nactivation=mish\n[route]\nlayers = -2\n[convolutional]\nbatch_normalize=1\nfilters=64\nsize=1\nstride=1\npad=1\nactivation=mish\n[convolutional]\nbatch_normalize=1\nfilters=32\nsize=1\nstride=1\npad=1\nactivation=mish\n[convolutional]\nbatch_normalize=1\nfilters=64\nsize=3\nstride=1\npad=1\nactivation=mish\n[shortcut]\nfrom=-3\nactivation=linear\n[convolutional]\nbatch_normalize=1\nfilters=64\nsize=1\nstride=1\n")
   f.write("pad=1\nactivation=mish\n[route]\nlayers = -1,-7\n[convolutional]\nbatch_normalize=1\nfilters=64\nsize=1\nstride=1\npad=1\nactivation=mish\n[convolutional]\nbatch_normalize=1\nfilters=128\nsize=3\nstride=2\npad=1\nactivation=mish\n[convolutional]\nbatch_normalize=1\nfilters=64\nsize=1\nstride=1\npad=1\nactivation=mish\n[route]\nlayers = -2\n[convolutional]\nbatch_normalize=1\nfilters=64\nsize=1\nstride=1\npad=1\nactivation=mish\n[convolutional]\nbatch_normalize=1\nfilters=64\nsize=1\nstride=1\npad=1\nactivation=mish\n[convolutional]\nbatch_normalize=1\nfilters=64\nsize=3\nstride=1\npad=1\nactivation=mish\n[shortcut]\nfrom=-3\nactivation=linear\n[convolutional]\nbatch_normalize=1\nfilters=64\nsize=1\nstride=1\npad=1\nactivation=mish\n[convolutional]\nbatch_normalize=1\nfilters=64\nsize=3\nstride=1\npad=1\nactivation=mish\n[shortcut]\nfrom=-3\nactivation=linear\n[convolutional]\nbatch_normalize=1\nfilters=64\nsize=1\n")
   f.write("stride=1\npad=1\nactivation=mish\n[route]\nlayers = -1,-10\n[convolutional]\nbatch_normalize=1\nfilters=128\nsize=1\nstride=1\npad=1\nactivation=mish\n\n[convolutional]\nbatch_normalize=1\nfilters=256\nsize=3\nstride=2\npad=1\nactivation=mish\n[convolutional]\nbatch_normalize=1\nfilters=128\nsize=1\nstride=1\npad=1\nactivation=mish\n[route]\nlayers = -2\n[convolutional]\nbatch_normalize=1\nfilters=128\nsize=1\nstride=1\npad=1\nactivation=mish\n[convolutional]\nbatch_normalize=1\nfilters=128\nsize=1\nstride=1\npad=1\nactivation=mish\n[convolutional]\nbatch_normalize=1\nfilters=128\nsize=3\nstride=1\npad=1\nactivation=mish\n[shortcut]\nfrom=-3\nactivation=linear\n[convolutional]\nbatch_normalize=1\nfilters=128\nsize=1\nstride=1\npad=1\nactivation=mish\n[convolutional]\nbatch_normalize=1\nfilters=128\nsize=3\nstride=1\npad=1\nactivation=mish\n[shortcut]\nfrom=-3\nactivation=linear\n[convolutional]\nbatch_normalize=1\n")
