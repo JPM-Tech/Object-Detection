@@ -27,7 +27,7 @@ You can use the Notebook linked [here](https://colab.research.google.com/github/
 In the CoLab Menu:
 Click "Edit"
 Then "Notebook Settings" 
-Under "Hardware" select "GPU"
+Under "Hardware" select "GPU", Then click "Save"
 
 ## Step 4: Run All
 In the CoLab Menu:
@@ -122,6 +122,9 @@ drive.mount('/content/gdrive')
 #create the path names to the training and testing images
 !python generate_train.py
 !python generate_test.py
+
+# verify that the newly generated files train.txt and test.txt are listed below
+!ls data/
 
 #Download pretrained weights for the convolutional layers of darknet
 COPY THIS FILE TO MY REPO
