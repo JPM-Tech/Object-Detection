@@ -104,7 +104,7 @@ drive.mount('/content/gdrive')
 !ls /mydrive
 
 #cd back into the darknet folder to run detections
-%cd darknet
+%cd /content/darknet/
 
 #copy over the data from google drive into the directory of the Colab VM
 !cp /mydrive/yolov4/obj.zip ../
@@ -116,8 +116,8 @@ drive.mount('/content/gdrive')
 !cp /mydrive/yolov4/generate_test.py ./
 
 #unzip the datasets and their contents so that they are now in /darknet/data/ folder
-!unzip ../obj.zip -d data/
-!unzip ../test.zip -d data/
+!unzip ../obj.zip -d data/obj/
+!unzip ../test.zip -d data/test/
 
 #create the path names to the training and testing images
 !python generate_train.py
