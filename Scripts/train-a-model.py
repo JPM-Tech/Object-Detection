@@ -5,14 +5,11 @@ import sys
 import pathlib
 
 parser = argparse.ArgumentParser()
-# parser.add_argument("--optional_value_one_from_cmd", help="text for when someone runs --help")
-# parser.add_argument("required_value_one_from_cmd", help="text for when someone runs --help")
 parser.add_argument("data_located_at", help="text for when someone runs --help")
 parser.add_argument("training_to_be_done", help="text for when someone runs --help")
 parser.add_argument("using_yolo_v", help="text for when someone runs --help")
 
 args = parser.parse_args()
-# print(args.required_value_one_from_cmd)
 
 if args.data_located_at == 'local':
   # Create files from my own data
@@ -35,6 +32,6 @@ if args.data_located_at == 'local':
     print("Found Darknet yolo model")
   else:
     print("Downloading Darknet yolo model...")
-    os.system("python3 build-darknet.py")
+    os.system("python3 download-and-build-darknet.py")
   
   os.system("python3 create-files-from-my-own-data.py class_list_length " + str(len(class_list)) + " training_folder_path " + training_folder + " validation_folder_path " + validation_folder)
