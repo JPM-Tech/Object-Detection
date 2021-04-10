@@ -16,9 +16,9 @@ shutil.make_archive(upload_to_google_folder_path + "/obj", "zip", training_folde
 shutil.make_archive(upload_to_google_folder_path + "/test", "zip", validation_folder_path)
 
 #move into the folder where we will store all the files that will be uploaded to google drive
-os.chdir(upload_to_google_folder_path)
+# os.chdir(upload_to_google_folder_path)
 
-os.system("python3 ../Scripts/create-custom-training-files.py " + class_list_length)
+os.system("python3 create-custom-training-files.py " + class_list_length)
 
 # print("Creating obj.names file")
 # with open('obj.names', 'w') as f:

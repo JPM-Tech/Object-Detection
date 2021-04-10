@@ -16,6 +16,6 @@ os.system("sed -i 's/OPENCV=0/OPENCV=1/' Makefile")
 os.system("make")
 
 # get pretrained weights for darknet for Yolov3
-os.system("wget https://pjreddie.com/media/files/yolov3.weights")
+os.system("curl https://pjreddie.com/media/files/yolov3.weights")
 # get pretrained weights for darknet for Yolov4
-os.system("wget https://github.com/AlexeyAB/darknet/releases/download/darknet_yolo_v3_optimal/yolov4.weights")
+os.system("curl https://github.com/AlexeyAB/darknet/releases/download/darknet_yolo_v3_optimal/yolov4.weights")

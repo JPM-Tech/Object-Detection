@@ -5,6 +5,8 @@ class_list_length = sys.argv[1]
 new_filter_number = 0
 new_class_number = 0
 
+os.chdir("../upload_these_files_to_google_drive")
+
 print("Creating obj.data file")
 with open('obj.data', 'w') as f:
   f.write("classes = " + class_list_length + "\n")
