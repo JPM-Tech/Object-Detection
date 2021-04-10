@@ -1,7 +1,7 @@
 import fileinput
 import os
 import sys
-import pathlib
+# import pathlib
 
 data_located_at = sys.argv[1]
 training_to_be_done = sys.argv[2]
@@ -26,7 +26,7 @@ if data_located_at == 'local':
 
   if training_to_be_done == 'local':
     print("Looking for Dakrnet model...")
-    if Path("darknet").exists():
+    if os.path.exists("darknet"):
       print("Found Darknet yolo model")
     else:
       print("Downloading Darknet yolo model...")
