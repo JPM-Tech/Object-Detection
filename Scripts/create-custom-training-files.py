@@ -1,10 +1,7 @@
-import argparse
 import os
+import sys
 
-parser = argparse.ArgumentParser()
-parser.add_argument("class_list_length", help="text for when someone runs --help")
-args = parser.parse_args()
-
+class_list_length = sys.argv[1]
 new_filter_number = 0
 new_class_number = 0
 

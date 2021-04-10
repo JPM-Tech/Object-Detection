@@ -1,23 +1,19 @@
-import argparse
 import os
-# import re
 import sys
 import shutil
 
 combined_file_name = ""
 upload_to_google_folder_path = "upload_these_files_to_google_drive"
 
-parser = argparse.ArgumentParser()
-parser.add_argument("class_list_length", help="text for when someone runs --help")
-parser.add_argument("training_folder_path", help="text for when someone runs --help")
-parser.add_argument("validation_folder_path", help="text for when someone runs --help")
-args = parser.parse_args()
+class_list_length = sys.argv[1]
+training_folder_path = sys.argv[2]
+validation_folder_path = sys.argv[3]
 
 print("Creating zip files")
 # Zip the image folders
 # to_location, filetype, from_location
-shutil.make_archive(upload_to_google_folder_path + "/obj", "zip", ars.training_folder_path)
-shutil.make_archive(upload_to_google_folder_path + "/test", "zip", args.validation_folder_path)
+shutil.make_archive(upload_to_google_folder_path + "/obj", "zip", training_folder_path)
+shutil.make_archive(upload_to_google_folder_path + "/test", "zip", validation_folder_path)
 
 #move into the folder where we will store all the files that will be uploaded to google drive
 os.chdir(upload_to_google_folder_path)
