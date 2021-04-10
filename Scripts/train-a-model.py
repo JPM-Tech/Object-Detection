@@ -6,12 +6,14 @@ import pathlib
 data_located_at = sys.argv[1]
 training_to_be_done = sys.argv[2]
 yolo_version = sys.argv[3]
+class_list = []
+final_class_name = []
 
 if data_located_at == 'local':
   # Create files from my own data
-  print("\nEnter a name of an object from your classes.txt (that should be in the same folder as the labeled images), then")
+  print("\nEnter a name of an object from your classes.txt (that should be in the same folder as the labeled images)")
   while True:
-    entry = input("\nObject Name (d for done): ")
+    entry = input("Object Name (d for done): ")
     if entry.lower() == 'd' or entry.lower == '':
       break
     class_list.append(entry)
@@ -24,8 +26,7 @@ if data_located_at == 'local':
 
   if training_to_be_done == 'local':
     print("Looking for Dakrnet model...")
-    darknet_folder_path = Path("./Scripts/darknet")
-    if darknet_folder_path.exists():
+    if Path("darknet").exists():
       print("Found Darknet yolo model")
     else:
       print("Downloading Darknet yolo model...")

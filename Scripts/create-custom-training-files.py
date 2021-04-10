@@ -5,11 +5,6 @@ class_list_length = sys.argv[1]
 new_filter_number = 0
 new_class_number = 0
 
-print("Creating obj.names file")
-with open('obj.names', 'w') as f:
-  for each_key in class_list:
-    f.write(each_key + "\n")
-
 print("Creating obj.data file")
 with open('obj.data', 'w') as f:
   f.write("classes = " + class_list_length + "\n")
