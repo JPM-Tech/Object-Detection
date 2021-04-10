@@ -1,0 +1,80 @@
+import argparse
+import os
+# import re
+import sys
+import shutil
+
+combined_file_name = ""
+upload_to_google_folder_path = "upload_these_files_to_google_drive"
+
+parser = argparse.ArgumentParser()
+parser.add_argument("class_list_length", help="text for when someone runs --help")
+parser.add_argument("training_folder_path", help="text for when someone runs --help")
+parser.add_argument("validation_folder_path", help="text for when someone runs --help")
+args = parser.parse_args()
+
+print("Creating zip files")
+# Zip the image folders
+# to_location, filetype, from_location
+shutil.make_archive(upload_to_google_folder_path + "/obj", "zip", ars.training_folder_path)
+shutil.make_archive(upload_to_google_folder_path + "/test", "zip", args.validation_folder_path)
+
+#move into the folder where we will store all the files that will be uploaded to google drive
+os.chdir(upload_to_google_folder_path)
+
+os.system("python3 ../Scripts/create-custom-training-files.py")
+
+# print("Creating obj.names file")
+# with open('obj.names', 'w') as f:
+#   for each_key in class_list:
+#     f.write(each_key + "\n")
+
+# print("Creating obj.data file")
+# with open('obj.data', 'w') as f:
+#   f.write("classes = " + class_list_length + "\n")
+#   f.write("train = data/train.txt\n")
+#   f.write("valid = data/test.txt\n")
+#   f.write("names = data/obj.names\n")
+#   f.write("backup = /mydrive/yolov4/backup\n")
+
+# new_class_number = int(class_list_length)
+# new_filter_number = (new_class_number + 5) * 3
+# max_batches = int(class_list_length) * 2000
+# if int(class_list_length) <= 3:
+#   max_batches = 6000
+
+# min_steps = int(max_batches * 0.8)
+# max_steps = int(max_batches * 0.9)
+# number_of_steps = str(min_steps) + "," + str(max_steps)
+
+# print("Creating config file ")
+# with open('yolov4-obj.cfg', 'w') as f:
+#   f.write("[net]\nbatch=64\nsubdivisions=16\nwidth=416\nheight=416\nchannels=3\nmomentum=0.949\ndecay=0.0005\nangle=0\nsaturation = 1.5\nexposure = 1.5\nhue=.1\n\nlearning_rate=0.001\nburn_in=1000\n")
+#   f.write("max_batches = " + str(max_batches) + "\n")
+#   f.write("policy=steps\n")
+#   f.write("steps=" + str(number_of_steps) + "\n")
+#   f.write("scales=.1,.1\n\nmosaic=1\n\n[convolutional]\nbatch_normalize=1\nfilters=32\nsize=3\nstride=1\npad=1\nactivation=mish\n[convolutional]\nbatch_normalize=1\nfilters=64\nsize=3\nstride=2\npad=1\nactivation=mish\n[convolutional]\nbatch_normalize=1\nfilters=64\nsize=1\nstride=1\npad=1\nactivation=mish\n[route]\nlayers = -2\n[convolutional]\nbatch_normalize=1\nfilters=64\nsize=1\nstride=1\npad=1\nactivation=mish\n[convolutional]\nbatch_normalize=1\nfilters=32\nsize=1\nstride=1\npad=1\nactivation=mish\n[convolutional]\nbatch_normalize=1\nfilters=64\nsize=3\nstride=1\npad=1\nactivation=mish\n[shortcut]\nfrom=-3\nactivation=linear\n[convolutional]\nbatch_normalize=1\nfilters=64\nsize=1\nstride=1\n")
+#   f.write("pad=1\nactivation=mish\n[route]\nlayers = -1,-7\n[convolutional]\nbatch_normalize=1\nfilters=64\nsize=1\nstride=1\npad=1\nactivation=mish\n[convolutional]\nbatch_normalize=1\nfilters=128\nsize=3\nstride=2\npad=1\nactivation=mish\n[convolutional]\nbatch_normalize=1\nfilters=64\nsize=1\nstride=1\npad=1\nactivation=mish\n[route]\nlayers = -2\n[convolutional]\nbatch_normalize=1\nfilters=64\nsize=1\nstride=1\npad=1\nactivation=mish\n[convolutional]\nbatch_normalize=1\nfilters=64\nsize=1\nstride=1\npad=1\nactivation=mish\n[convolutional]\nbatch_normalize=1\nfilters=64\nsize=3\nstride=1\npad=1\nactivation=mish\n[shortcut]\nfrom=-3\nactivation=linear\n[convolutional]\nbatch_normalize=1\nfilters=64\nsize=1\nstride=1\npad=1\nactivation=mish\n[convolutional]\nbatch_normalize=1\nfilters=64\nsize=3\nstride=1\npad=1\nactivation=mish\n[shortcut]\nfrom=-3\nactivation=linear\n[convolutional]\nbatch_normalize=1\nfilters=64\nsize=1\n")
+#   f.write("stride=1\npad=1\nactivation=mish\n[route]\nlayers = -1,-10\n[convolutional]\nbatch_normalize=1\nfilters=128\nsize=1\nstride=1\npad=1\nactivation=mish\n\n[convolutional]\nbatch_normalize=1\nfilters=256\nsize=3\nstride=2\npad=1\nactivation=mish\n[convolutional]\nbatch_normalize=1\nfilters=128\nsize=1\nstride=1\npad=1\nactivation=mish\n[route]\nlayers = -2\n[convolutional]\nbatch_normalize=1\nfilters=128\nsize=1\nstride=1\npad=1\nactivation=mish\n[convolutional]\nbatch_normalize=1\nfilters=128\nsize=1\nstride=1\npad=1\nactivation=mish\n[convolutional]\nbatch_normalize=1\nfilters=128\nsize=3\nstride=1\npad=1\nactivation=mish\n[shortcut]\nfrom=-3\nactivation=linear\n[convolutional]\nbatch_normalize=1\nfilters=128\nsize=1\nstride=1\npad=1\nactivation=mish\n[convolutional]\nbatch_normalize=1\nfilters=128\nsize=3\nstride=1\npad=1\nactivation=mish\n[shortcut]\nfrom=-3\nactivation=linear\n[convolutional]\nbatch_normalize=1\n")
+#   f.write("filters=128\nsize=1\nstride=1\npad=1\nactivation=mish\n[convolutional]\nbatch_normalize=1\nfilters=128\nsize=3\nstride=1\npad=1\nactivation=mish\n[shortcut]\nfrom=-3\nactivation=linear\n[convolutional]\nbatch_normalize=1\nfilters=128\nsize=1\nstride=1\npad=1\nactivation=mish\n[convolutional]\nbatch_normalize=1\nfilters=128\nsize=3\nstride=1\npad=1\nactivation=mish\n[shortcut]\nfrom=-3\nactivation=linear\n[convolutional]\nbatch_normalize=1\nfilters=128\nsize=1\nstride=1\npad=1\nactivation=mish\n[convolutional]\nbatch_normalize=1\nfilters=128\nsize=3\nstride=1\npad=1\nactivation=mish\n[shortcut]\nfrom=-3\nactivation=linear\n[convolutional]\nbatch_normalize=1\nfilters=128\nsize=1\nstride=1\npad=1\nactivation=mish\n[convolutional]\nbatch_normalize=1\nfilters=128\nsize=3\nstride=1\npad=1\nactivation=mish\n[shortcut]\nfrom=-3\nactivation=linear\n\n[convolutional]\nbatch_normalize=1\nfilters=128\nsize=1\nstride=1\npad=1\n")
+#   f.write("activation=mish\n[convolutional]\nbatch_normalize=1\nfilters=128\nsize=3\nstride=1\npad=1\nactivation=mish\n[shortcut]\nfrom=-3\nactivation=linear\n[convolutional]\nbatch_normalize=1\nfilters=128\nsize=1\nstride=1\npad=1\nactivation=mish\n[convolutional]\nbatch_normalize=1\nfilters=128\nsize=3\nstride=1\npad=1\nactivation=mish\n[shortcut]\nfrom=-3\nactivation=linear\n[convolutional]\nbatch_normalize=1\nfilters=128\nsize=1\nstride=1\npad=1\nactivation=mish\n[route]\nlayers = -1,-28\n[convolutional]\nbatch_normalize=1\nfilters=256\nsize=1\nstride=1\npad=1\nactivation=mish\n\n[convolutional]\nbatch_normalize=1\nfilters=512\nsize=3\nstride=2\npad=1\nactivation=mish\n[convolutional]\nbatch_normalize=1\nfilters=256\nsize=1\nstride=1\npad=1\nactivation=mish\n[route]\nlayers = -2\n[convolutional]\nbatch_normalize=1\nfilters=256\nsize=1\nstride=1\npad=1\nactivation=mish\n[convolutional]\nbatch_normalize=1\nfilters=256\n")
+#   f.write("size=1\nstride=1\npad=1\nactivation=mish\n[convolutional]\nbatch_normalize=1\nfilters=256\nsize=3\nstride=1\npad=1\nactivation=mish\n[shortcut]\nfrom=-3\nactivation=linear\n[convolutional]\nbatch_normalize=1\nfilters=256\nsize=1\nstride=1\npad=1\nactivation=mish\n[convolutional]\nbatch_normalize=1\nfilters=256\nsize=3\nstride=1\npad=1\nactivation=mish\n[shortcut]\nfrom=-3\nactivation=linear\n[convolutional]\nbatch_normalize=1\nfilters=256\nsize=1\nstride=1\npad=1\nactivation=mish\n[convolutional]\nbatch_normalize=1\nfilters=256\nsize=3\nstride=1\npad=1\nactivation=mish\n[shortcut]\nfrom=-3\nactivation=linear\n[convolutional]\nbatch_normalize=1\nfilters=256\nsize=1\nstride=1\npad=1\nactivation=mish\n[convolutional]\nbatch_normalize=1\nfilters=256\nsize=3\nstride=1\npad=1\nactivation=mish\n[shortcut]\nfrom=-3\nactivation=linear\n[convolutional]\nbatch_normalize=1\nfilters=256\nsize=1\nstride=1\npad=1\nactivation=mish\n")
+#   f.write("[convolutional]\nbatch_normalize=1\nfilters=256\nsize=3\nstride=1\npad=1\nactivation=mish\n[shortcut]\nfrom=-3\nactivation=linear\n[convolutional]\nbatch_normalize=1\nfilters=256\nsize=1\nstride=1\npad=1\nactivation=mish\n[convolutional]\nbatch_normalize=1\nfilters=256\nsize=3\nstride=1\npad=1\nactivation=mish\n[shortcut]\nfrom=-3\nactivation=linear\n[convolutional]\nbatch_normalize=1\nfilters=256\nsize=1\nstride=1\npad=1\nactivation=mish\n[convolutional]\nbatch_normalize=1\nfilters=256\nsize=3\nstride=1\npad=1\nactivation=mish\n[shortcut]\nfrom=-3\nactivation=linear\n[convolutional]\nbatch_normalize=1\nfilters=256\nsize=1\nstride=1\npad=1\nactivation=mish\n[convolutional]\nbatch_normalize=1\nfilters=256\nsize=3\nstride=1\npad=1\nactivation=mish\n[shortcut]\nfrom=-3\nactivation=linear\n[convolutional]\nbatch_normalize=1\nfilters=256\nsize=1\nstride=1\npad=1\nactivation=mish\n[route]\nlayers = -1,-28\n[convolutional]\n")
+#   f.write("batch_normalize=1\nfilters=512\nsize=1\nstride=1\npad=1\nactivation=mish\n[convolutional]\nbatch_normalize=1\nfilters=1024\nsize=3\nstride=2\npad=1\nactivation=mish\n[convolutional]\nbatch_normalize=1\nfilters=512\nsize=1\nstride=1\npad=1\nactivation=mish\n[route]\nlayers = -2\n[convolutional]\nbatch_normalize=1\nfilters=512\nsize=1\nstride=1\npad=1\nactivation=mish\n[convolutional]\nbatch_normalize=1\nfilters=512\nsize=1\nstride=1\npad=1\nactivation=mish\n[convolutional]\nbatch_normalize=1\nfilters=512\nsize=3\nstride=1\npad=1\nactivation=mish\n[shortcut]\nfrom=-3\nactivation=linear\n[convolutional]\nbatch_normalize=1\nfilters=512\nsize=1\nstride=1\npad=1\nactivation=mish\n[convolutional]\nbatch_normalize=1\nfilters=512\nsize=3\nstride=1\npad=1\nactivation=mish\n[shortcut]\nfrom=-3\nactivation=linear\n[convolutional]\nbatch_normalize=1\nfilters=512\nsize=1\nstride=1\npad=1\nactivation=mish\n[convolutional]\n")
+#   f.write("batch_normalize=1\nfilters=512\nsize=3\nstride=1\npad=1\nactivation=mish\n[shortcut]\nfrom=-3\nactivation=linear\n[convolutional]\nbatch_normalize=1\nfilters=512\nsize=1\nstride=1\npad=1\nactivation=mish\n[convolutional]\nbatch_normalize=1\nfilters=512\nsize=3\nstride=1\npad=1\nactivation=mish\n\n[shortcut]\nfrom=-3\nactivation=linear\n[convolutional]\nbatch_normalize=1\nfilters=512\nsize=1\nstride=1\npad=1\nactivation=mish\n[route]\nlayers = -1,-16\n[convolutional]\nbatch_normalize=1\nfilters=1024\nsize=1\nstride=1\npad=1\nactivation=mish\nstopbackward=800\n\n[convolutional]\nbatch_normalize=1\nfilters=512\nsize=1\nstride=1\npad=1\nactivation=leaky\n[convolutional]\nbatch_normalize=1\nsize=3\nstride=1\npad=1\nfilters=1024\nactivation=leaky\n[convolutional]\nbatch_normalize=1\nfilters=512\nsize=1\nstride=1\npad=1\nactivation=leaky\n\n[maxpool]\nstride=1\nsize=5\n[route]\nlayers=-2\n[maxpool]\nstride=1\nsize=9\n[route]\n")
+#   f.write("layers=-4\n[maxpool]\nstride=1\nsize=13\n[route]\nlayers=-1,-3,-5,-6\n[convolutional]\nbatch_normalize=1\nfilters=512\nsize=1\nstride=1\npad=1\nactivation=leaky\n[convolutional]\nbatch_normalize=1\nsize=3\nstride=1\npad=1\nfilters=1024\nactivation=leaky\n[convolutional]\nbatch_normalize=1\nfilters=512\nsize=1\nstride=1\npad=1\nactivation=leaky\n\n[convolutional]\nbatch_normalize=1\nfilters=256\nsize=1\nstride=1\npad=1\nactivation=leaky\n[upsample]\nstride=2\n[route]\nlayers = 85\n[convolutional]\nbatch_normalize=1\nfilters=256\nsize=1\nstride=1\npad=1\nactivation=leaky\n[route]\nlayers = -1, -3\n\n[convolutional]\nbatch_normalize=1\nfilters=256\nsize=1\nstride=1\npad=1\nactivation=leaky\n[convolutional]\nbatch_normalize=1\nsize=3\nstride=1\npad=1\nfilters=512\nactivation=leaky\n[convolutional]\nbatch_normalize=1\nfilters=256\nsize=1\nstride=1\npad=1\nactivation=leaky\n[convolutional]\nbatch_normalize=1\nsize=3\nstride=1\n")
+#   f.write("pad=1\nfilters=512\nactivation=leaky\n[convolutional]\nbatch_normalize=1\nfilters=256\nsize=1\nstride=1\npad=1\nactivation=leaky\n[convolutional]\nbatch_normalize=1\nfilters=128\nsize=1\nstride=1\npad=1\nactivation=leaky\n[upsample]\nstride=2\n[route]\nlayers = 54\n[convolutional]\nbatch_normalize=1\nfilters=128\nsize=1\nstride=1\npad=1\nactivation=leaky\n[route]\nlayers = -1, -3\n[convolutional]\nbatch_normalize=1\nfilters=128\nsize=1\nstride=1\npad=1\nactivation=leaky\n[convolutional]\nbatch_normalize=1\nsize=3\nstride=1\npad=1\nfilters=256\nactivation=leaky\n[convolutional]\nbatch_normalize=1\nfilters=128\nsize=1\nstride=1\npad=1\nactivation=leaky\n[convolutional]\nbatch_normalize=1\nsize=3\nstride=1\npad=1\nfilters=256\nactivation=leaky\n[convolutional]\nbatch_normalize=1\nfilters=128\nsize=1\nstride=1\npad=1\nactivation=leaky\n[convolutional]\nbatch_normalize=1\nsize=3\nstride=1\npad=1\nfilters=256\nactivation=leaky\n[convolutional]\nsize=1\nstride=1\npad=1\n")
+#   f.write("filters=" + str(new_filter_number) + "\n")
+#   f.write("activation=linear\n[yolo]\nmask = 0,1,2\nanchors = 12, 16, 19, 36, 40, 28, 36, 75, 76, 55, 72, 146, 142, 110, 192, 243, 459, 401\n")
+#   f.write("classes=" + str(new_class_number) + "\n")
+#   f.write("num=9\njitter=.3\nignore_thresh = .7\ntruth_thresh = 1\nscale_x_y = 1.2\niou_thresh=0.213\ncls_normalizer=1.0\niou_normalizer=0.07\niou_loss=ciou\nnms_kind=greedynms\nbeta_nms=0.6\nmax_delta=5\n[route]\nlayers = -4\n[convolutional]\nbatch_normalize=1\nsize=3\nstride=2\npad=1\nfilters=256\nactivation=leaky\n[route]\nlayers = -1, -16\n[convolutional]\nbatch_normalize=1\nfilters=256\nsize=1\nstride=1\npad=1\nactivation=leaky\n[convolutional]\nbatch_normalize=1\nsize=3\nstride=1\npad=1\nfilters=512\nactivation=leaky\n[convolutional]\nbatch_normalize=1\nfilters=256\nsize=1\nstride=1\npad=1\nactivation=leaky\n[convolutional]\nbatch_normalize=1\nsize=3\nstride=1\npad=1\nfilters=512\nactivation=leaky\n[convolutional]\nbatch_normalize=1\nfilters=256\nsize=1\nstride=1\npad=1\nactivation=leaky\n[convolutional]\nbatch_normalize=1\nsize=3\nstride=1\npad=1\nfilters=512\nactivation=leaky\n[convolutional]\nsize=1\nstride=1\npad=1\n")
+#   f.write("filters=" + str(new_filter_number) + "\n")
+#   f.write("activation=linear\n[yolo]\nmask = 3,4,5\nanchors = 12, 16, 19, 36, 40, 28, 36, 75, 76, 55, 72, 146, 142, 110, 192, 243, 459, 401\n")
+#   f.write("classes=" + str(new_class_number) + "\n")
+#   f.write("num=9\njitter=.3\nignore_thresh = .7\ntruth_thresh = 1\nscale_x_y = 1.1\niou_thresh=0.213\ncls_normalizer=1.0\niou_normalizer=0.07\niou_loss=ciou\nnms_kind=greedynms\nbeta_nms=0.6\nmax_delta=5\n[route]\nlayers = -4\n[convolutional]\nbatch_normalize=1\nsize=3\nstride=2\npad=1\nfilters=512\nactivation=leaky\n[route]\nlayers = -1, -37\n[convolutional]\nbatch_normalize=1\nfilters=512\nsize=1\nstride=1\npad=1\nactivation=leaky\n[convolutional]\nbatch_normalize=1\nsize=3\nstride=1\npad=1\nfilters=1024\nactivation=leaky\n[convolutional]\nbatch_normalize=1\nfilters=512\nsize=1\nstride=1\npad=1\nactivation=leaky\n[convolutional]\nbatch_normalize=1\nsize=3\nstride=1\npad=1\nfilters=1024\nactivation=leaky\n[convolutional]\nbatch_normalize=1\nfilters=512\nsize=1\nstride=1\npad=1\nactivation=leaky\n[convolutional]\nbatch_normalize=1\nsize=3\nstride=1\npad=1\nfilters=1024\nactivation=leaky\n\n[convolutional]\nsize=1\nstride=1\npad=1\n")
+#   f.write("filters=" + str(new_filter_number) + "\n")
+#   f.write("activation=linear\n\n\n[yolo]\nmask = 6,7,8\nanchors = 12, 16, 19, 36, 40, 28, 36, 75, 76, 55, 72, 146, 142, 110, 192, 243, 459, 401\n")
+#   f.write("classes=" + str(new_class_number) + "\n")
+#   f.write("num=9\njitter=.3\nignore_thresh = .7\ntruth_thresh = 1\nrandom=0\nscale_x_y = 1.05\niou_thresh=0.213\ncls_normalizer=1.0\niou_normalizer=0.07\niou_loss=ciou\nnms_kind=greedynms\nbeta_nms=0.6\nmax_delta=5\n")
+
+print("\n\nPre-Processing Script Complete\n\n")
