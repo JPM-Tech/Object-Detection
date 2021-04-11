@@ -24,6 +24,9 @@ if data_located_at == 'local':
   print("\nEnter the file path to the folder that holds the images and labels used for validation")
   validation_folder = input("Validation Path: ").rstrip()
 
+  print("Installing required dependencies")
+  os.system("pip install -r requirements.txt")
+
   if training_to_be_done == 'local':
     print("Looking for Dakrnet model...")
     if os.path.exists("darknet"):

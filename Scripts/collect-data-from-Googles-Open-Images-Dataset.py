@@ -32,8 +32,8 @@ import shutil
 
 # combined_file_name = "_".join(class_list)
 
-print("Installing required dependencies")
-os.system("pip install -r requirements.txt")
+# print("Installing required dependencies")
+# os.system("pip install -r requirements.txt")
 
 print("Downloading Training images from Open Images Dataset. This may take a while, just be patient.")
 os.system("python3 main.py downloader --classes classes.txt --type_csv train --limit " + max_number_of_training_files + " --multiclasses 1")

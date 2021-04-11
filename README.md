@@ -8,9 +8,7 @@ OR
 
 
 
-# REQUIRED DEPENDENCIES
-wget
-git cli
+
 
 
 ## Credits
