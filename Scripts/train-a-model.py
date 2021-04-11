@@ -8,6 +8,7 @@ training_to_be_done = sys.argv[2]
 yolo_version = sys.argv[3]
 class_list = []
 final_class_name = []
+combined_file_name = ""
 
 if data_located_at == 'local':
   # Create files from my own data
@@ -41,18 +42,14 @@ if data_located_at == 'local':
   with open('obj.names', 'w') as f:
     for each_key in class_list:
       f.write(each_key + "\n")
+
   os.chdir("../Scripts")
-  
   os.system("python3 create-files-from-my-own-data.py " + str(len(class_list)) + " " + training_folder + " " + validation_folder)
 
 # ************
 # GET DATA FROM CLOUD
 # ************
 if data_located_at == 'cloud':
-  class_list = []
-  final_class_name = []
-  combined_file_name = ""
-
   print("\nEnter a name of an object from the Open Images Dataset that you want to download, then")
   print("enter a name that will be used to display results (NO SPACES), then press Enter to continue")
   while True:
@@ -68,6 +65,14 @@ if data_located_at == 'cloud':
   print("\nThis will automatically download a validation set of images that is 20 percent of the number of training files")
   max_number_of_training_files = input("How many training files would you like to download: ")
   max_number_of_validation_files = int(int(max_number_of_training_files) * .2)
+
+  if training_to_be_done == 'local':
+    print("Looking for Dakrnet model...")
+    if os.path.exists("darknet"):
+      print("Found Darknet yolo model")
+    else:
+      print("Downloading Darknet yolo model...")
+      os.system("python3 download-and-build-darknet.py")
 
   #move into OIDv4_ToolKit
   os.chdir("OIDv4_ToolKit")
@@ -86,3 +91,21 @@ if data_located_at == 'cloud':
       f.write(each_key + "\n")
 
   combined_file_name = "_".join(class_list)
+
+  os.chdir("../Scripts")
+  os.system("python3 collect-data-from-Googles-Open-Images-Dataset.py " + str(len(class_list)) + " " + str(max_number_of_training_files) + " " + str(max_number_of_validation_files) + " " + combined_file_name)
+
+
+print("\n\nPre-Processing Script Complete\n\n")
+
+
+if training_to_be_done == 'local':
+  print("insert local training script here")
+
+if training_to_be_done == 'cloud':
+  if data_located_at == 'local':
+    print("use the following link to open the Notebook in Google CoLab")
+    print("") # add link here to colab notebook for use with locally gathered data
+  if data_located_at == 'cloud':
+    print("use the following link to open the Notebook in Google CoLab")
+    print("") # add link here to colab notebook for use with data gathered from Open Images Dataset

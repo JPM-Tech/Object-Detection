@@ -21,5 +21,3 @@ shutil.make_archive(upload_to_google_folder_path + "/test", "zip", validation_fo
 # moving back into scripts folder so that the custom files can continue to be written
 os.chdir("Scripts")
 os.system("python3 create-custom-training-files.py " + class_list_length)
-
-print("\n\nPre-Processing Script Complete\n\n")

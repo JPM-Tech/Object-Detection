@@ -2,6 +2,14 @@ import os
 from PIL import Image
 import sys
 
+# 
+# This will take in a folder of images and resize all the images in that folder to where
+# the largest side of the image is the max size that the user entered
+# 
+# This script is seperate from the other object detect scripts, however, it could be useful when trying to shrink image
+# size to reduce memory usage
+# 
+
 print("Enter the path to the folder containing the images you want to re-size")
 folder_holding_orig_images = input("Path: ").replace("'", "").strip()
 max_size = int(input("Enter the max pixel size of the image (ex: 1024): "))
