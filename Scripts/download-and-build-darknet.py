@@ -7,10 +7,10 @@ os.system("git clone https://github.com/AlexeyAB/darknet")
 os.chdir("darknet")
 
 # imports open cv into the repo and allows it to be used
-os.system("import cv2")
+# os.system("import cv2")
 
 #change makefile to have GPU and OPENCV enabled
-os.system("sed -i '' 's/OPENCV=0/OPENCV=1/' Makefile")
+# os.system("sed -i '' 's/OPENCV=0/OPENCV=1/' Makefile")
 # os.system("sed -i 's/GPU=0/GPU=1/' Makefile")
 # os.system("sed -i 's/CUDNN=0/CUDNN=1/' Makefile")
 # os.system("sed -i 's/CUDNN_HALF=0/CUDNN_HALF=1/' Makefile")
