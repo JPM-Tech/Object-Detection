@@ -12,3 +12,4 @@ awscli
 urllib3
 wget
 github-cli
+coremltools

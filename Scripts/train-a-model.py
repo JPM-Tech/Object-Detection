@@ -101,6 +101,8 @@ print("\n\nPre-Processing Script Complete\n\n")
 
 if training_to_be_done == 'local':
   print("insert local training script here")
+  # os.system("python3 generate-tf-model.py")
+  # os.system("python3 generate-core-ml-model.py")
 
 if training_to_be_done == 'cloud':
   if data_located_at == 'local':
