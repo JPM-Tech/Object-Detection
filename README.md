@@ -1,11 +1,23 @@
-# I want to create an object detection model from...
+# Object Detection Easy Button
 
-[Images that I have taken and labeled myself](https://github.com/JPM-Tech/Object-Detection/tree/master/Pre-Processing/From-My-Own-Labeled-Data)
+## Installation
+Installation is simple, just download the repo, cd into the main directory, and run the following command to get started:
+```
+python3 object-detection-easy-button.py
+```
+Then follow the prompts on the screen
 
-OR
+## What can this script do?
+With this script, you can... 
+1. Train a machine learning model from scratch using your own custom labeled images
+2. Download pre-labeled images from Googles Open Images Dataset
+3. Train a model on your local computer or using Google CoLab
 
-[Images that I found using Googles Open Images Dataset](https://github.com/JPM-Tech/Object-Detection/tree/master/Pre-Processing/From-Open-Images-Dataset)
 
+### Why would you do this?
+If you are like me and just want to make an object detection model, without getting a masters degree in machine learning to do it, this is the repo for you.
+
+All the code is open source and broken up into small chunks so that it is easy to follow if you want to read through the code.
 
 
 
