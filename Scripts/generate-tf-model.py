@@ -10,7 +10,7 @@ print("Creating TensorFlow Model")
 os.system("python3 save_model.py --weights " + path_to_weights_file.rstrip() + " --output ./checkpoints/custom-416 --input_size 416 --model yolov4 ")
 
 print("Creating TensorFlow Light Model")
-os.system("python3 save_model.py --weights " + path_to_weights_file.rstrip() + " --output ./checkpoints/custom-416 --input_size 416 --model yolov4 --framework tflite")
+os.system("python3 save_model.py --weights " + path_to_weights_file.rstrip() + " --output ./checkpoints/custom-416-tf-lite --input_size 416 --model yolov4 --framework tflite")
 
 print("TensorFlow model created successfully")
 print("Path to created model...")
