@@ -25,6 +25,11 @@ if data_located_at == 'local':
   print("\nEnter the file path to the folder that holds the images and labels used for validation")
   validation_folder = input("Validation Path: ").rstrip()
 
+# ************
+# We need to check all the images and make sure that they are *.jpg since that is the only file that CoLab can use to create a model
+# ************
+
+
   print("Installing required dependencies")
   os.system("pip install -r requirements.txt")
 
@@ -108,6 +113,7 @@ if training_to_be_done == 'cloud':
   if data_located_at == 'local':
     print("use the following link to open the Notebook in Google CoLab")
     print("") # add link here to colab notebook for use with locally gathered data
+    print("Remember before running a new CoLab notebook, go to Edit, then Notebook Settings, then Hardware Accelleration, and select GPU, then click Save.")
   if data_located_at == 'cloud':
     print("use the following link to open the Notebook in Google CoLab")
     print("") # add link here to colab notebook for use with data gathered from Open Images Dataset

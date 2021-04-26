@@ -9,11 +9,12 @@ import pathlib
 
 # Question 1
 print("\n[ 1 ] I already have data and it is labeled.")
-print("[ 2 ] I know classes I want to download from the Open Images Dataset.")
+print("[ 2 ] I know the name(s) of the class(es) that I want to download from the Open Images Dataset.")
 print("[ 3 ] I want to resume training the model I was working on.")
-print("[ 4 ] How do I label images for object detection?")
-print("[ 5 ] What is the Open Images Dataset?")
-print("[ 6 ] I want run my object detector on a test image.")
+print("[ 4 ] I want to create models from my own custom weight files.")
+print("[ 5 ] How do I label images for object detection?")
+print("[ 6 ] What is the Open Images Dataset?")
+print("[ 7 ] I want run my object detector on a test image.")
 question_one = input("Enter one of the numbers above and press enter (CRTL + C to quit): ")
 
 i_want_to_train_a_model = question_one == '1' or question_one == '2'
@@ -48,11 +49,16 @@ if question_one == '3':
   if yolo_version == '3' or yolo_version == '4':
     # may need ./darknet.exe for windows
     os.system("./darknet detector train data/obj.data cfg/yolov" + yolo_version + "-custom.cfg yolov" + yolo_version + "-obj_last.weights")
+
 elif question_one == '4':
-  print("Send to LabelImg Repo")
+  os.system("python3 generate-tf-model.py")
+  os.system("python3 generate-core-ml-model.py")
+
 elif question_one == '5':
-  print("Send to Open Images Dataset")
+  print("Send to LabelImg Repo")
 elif question_one == '6':
+  print("Send to Open Images Dataset")
+elif question_one == '7':
   path_to_image = input("Enter the file path to the image (q to quit): ")
   if path_to_image != 'q':
     # run the code to test the image
