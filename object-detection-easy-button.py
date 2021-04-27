@@ -51,6 +51,7 @@ if question_one == '3':
     os.system("./darknet detector train data/obj.data cfg/yolov" + yolo_version + "-custom.cfg yolov" + yolo_version + "-obj_last.weights")
 
 elif question_one == '4':
+  os.chdir("./Scripts")
   os.system("python3 generate-tf-model.py")
   os.system("python3 generate-core-ml-model.py")
 
