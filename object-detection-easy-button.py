@@ -62,9 +62,20 @@ elif question_one == '6':
 elif question_one == '7':
   path_to_image = input("Enter the file path to the image (q to quit): ")
   if path_to_image != 'q':
+    os.chdir("./Scripts")
     # run the code to test the image
+    print("Looking for Dakrnet model...")
+    if os.path.exists("darknet"):
+      print("Found Darknet yolo model")
+    else:
+      print("Downloading Darknet yolo model...")
+      os.system("python3 download-and-build-darknet.py")
+
+    os.chdir("darknet")
+
+    # make sure obj.data and obj.names are in the file
     # may need ./darknet.exe for windows
-    os.system("./darknet detector test data/obj.data cfg/yolov3-custom.cfg backup/yolov3-custome_last.weights " + path_to_image)
+    os.system("./darknet detector test ../../upload_these_files_to_google_drive/obj.data cfg/yolov3-custom.cfg backup/yolov3-custome_last.weights " + path_to_image)
 
 # Question 3 - (Answered 1 & 1)
 # start running the code to train a model locally from data I already have
