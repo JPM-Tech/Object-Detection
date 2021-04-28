@@ -2,7 +2,7 @@ import os
 import sys
 
 #clone darknet repo
-os.system("git clone https://github.com/AlexeyAB/darknet")
+# os.system("git clone https://github.com/AlexeyAB/darknet")
 
 os.chdir("darknet")
 
