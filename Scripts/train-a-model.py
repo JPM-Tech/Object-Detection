@@ -34,11 +34,11 @@ if data_located_at == 'local':
   os.system("pip install -r requirements.txt")
 
   if training_to_be_done == 'local':
-    print("Looking for Dakrnet model...")
-    if os.path.exists("darknet"):
+    print("Checking for Dakrnet yolo weights file...")
+    if os.path.exists("darknet/yolov3.weights") || os.path.exists("darknet/yolov4.weights"):
       print("Found Darknet yolo model")
     else:
-      print("Downloading Darknet yolo model...")
+      print("Downloading Darknet yolo weights...")
       os.system("python3 download-and-build-darknet.py")
 
   # create obj.names file
@@ -72,11 +72,11 @@ if data_located_at == 'cloud':
   max_number_of_validation_files = int(int(max_number_of_training_files) * .2)
 
   if training_to_be_done == 'local':
-    print("Looking for Dakrnet model...")
-    if os.path.exists("darknet"):
+    print("Checking for Dakrnet yolo weights file...")
+    if os.path.exists("darknet/yolov3.weights") || os.path.exists("darknet/yolov4.weights"):
       print("Found Darknet yolo model")
     else:
-      print("Downloading Darknet yolo model...")
+      print("Downloading Darknet yolo weights...")
       os.system("python3 download-and-build-darknet.py")
 
   #move into OIDv4_ToolKit

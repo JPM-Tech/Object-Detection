@@ -19,7 +19,6 @@ question_one = input("Enter one of the numbers above and press enter (CRTL + C t
 
 i_want_to_train_a_model = question_one == '1' or question_one == '2'
 
-# Run the Code
 if i_want_to_train_a_model:
   print("\n[ 1 ] I want to train the model on my local computer.")
   print("[ 2 ] I want to train the model using Google CoLab.")
@@ -55,27 +54,25 @@ elif question_one == '4':
   os.system("python3 generate-tf-model.py")
   os.system("python3 generate-core-ml-model.py")
 
+
 elif question_one == '5':
   print("Send to LabelImg Repo")
+
+
 elif question_one == '6':
   print("Send to Open Images Dataset")
+
+
 elif question_one == '7':
-  path_to_image = input("Enter the file path to the image (q to quit): ")
-  if path_to_image != 'q':
-    os.chdir("./Scripts")
-    # run the code to test the image
-    print("Looking for Dakrnet model...")
-    if os.path.exists("darknet"):
-      print("Found Darknet yolo model")
-    else:
-      print("Downloading Darknet yolo model...")
-      os.system("python3 download-and-build-darknet.py")
+  path_to_image = input("Enter the file path to the image: ")
+  print("\n[ 3 ] I want to train with Yolo v3 (the version that you began training with).")
+  print("[ 4 ] I want to train with Yolo v4 (the version that you began training with).")
+  yolo_version = input("Enter one of the numbers above and press enter: ")
+  os.chdir("./Scripts/Functions-For-TensorFlow-and-TensorFlow-Lite-Model")
+  # run the code to test the image
 
-    os.chdir("darknet")
-
-    # make sure obj.data and obj.names are in the file
-    # may need ./darknet.exe for windows
-    os.system("./darknet detector test ../../upload_these_files_to_google_drive/obj.data cfg/yolov3-custom.cfg backup/yolov3-custome_last.weights " + path_to_image)
+  # make sure the checkpoints/custom-416 file is there
+  os.system("python3 detect.py --weights ./checkpoints/custom-416 --size 416 --model yolov" + yolo_version + " --images " + path_to_image.rstrip())
 
 # Question 3 - (Answered 1 & 1)
 # start running the code to train a model locally from data I already have

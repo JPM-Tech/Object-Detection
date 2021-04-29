@@ -1,9 +1,6 @@
 import os
 import sys
 
-#clone darknet repo
-# os.system("git clone https://github.com/AlexeyAB/darknet")
-
 os.chdir("darknet")
 
 # imports open cv into the repo and allows it to be used
@@ -19,6 +16,6 @@ os.chdir("darknet")
 os.system("make")
 
 # get pretrained weights for darknet for Yolov3
-os.system("curl https://pjreddie.com/media/files/yolov3.weights")
+os.system("wget https://pjreddie.com/media/files/yolov3.weights")
 # get pretrained weights for darknet for Yolov4
-os.system("curl https://github.com/AlexeyAB/darknet/releases/download/darknet_yolo_v3_optimal/yolov4.weights")
+os.system("wget https://github.com/AlexeyAB/darknet/releases/download/darknet_yolo_v3_optimal/yolov4.weights")
