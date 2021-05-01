@@ -27,7 +27,7 @@ max_steps = int(max_batches * 0.9)
 number_of_steps = str(min_steps) + "," + str(max_steps)
 
 print("Creating config file ")
-with open('yolov4-obj.cfg', 'w') as f:
+with open('custom-yolo.cfg', 'w') as f:
   f.write("[net]\nbatch=64\nsubdivisions=16\nwidth=416\nheight=416\nchannels=3\nmomentum=0.949\ndecay=0.0005\nangle=0\nsaturation = 1.5\nexposure = 1.5\nhue=.1\n\nlearning_rate=0.001\nburn_in=1000\n")
   f.write("max_batches = " + str(max_batches) + "\n")
   f.write("policy=steps\n")
