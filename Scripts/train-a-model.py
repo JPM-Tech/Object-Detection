@@ -49,7 +49,7 @@ if data_located_at == 'local':
       f.write(each_key + "\n")
 
   os.chdir("../Scripts")
-  os.system("python3 create-files-from-my-own-data.py " + str(len(class_list)) + " " + training_folder + " " + validation_folder)
+  os.system("python3 create-files-from-my-own-data.py " + str(len(class_list)) + " " + training_folder + " " + validation_folder + " " + yolo_version)
 
 # ************
 # GET DATA FROM CLOUD
@@ -98,7 +98,7 @@ if data_located_at == 'cloud':
   combined_file_name = "_".join(class_list)
 
   os.chdir("../Scripts")
-  os.system("python3 collect-data-from-Googles-Open-Images-Dataset.py " + str(len(class_list)) + " " + str(max_number_of_training_files) + " " + str(max_number_of_validation_files) + " " + combined_file_name)
+  os.system("python3 collect-data-from-Googles-Open-Images-Dataset.py " + str(len(class_list)) + " " + str(max_number_of_training_files) + " " + str(max_number_of_validation_files) + " " + combined_file_name + " " + yolo_version)
 
 
 print("\n\nPre-Processing Script Complete\n\n")

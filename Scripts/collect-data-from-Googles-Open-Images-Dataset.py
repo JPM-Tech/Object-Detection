@@ -8,6 +8,7 @@ class_list_length = sys.argv[1]
 max_number_of_training_files = sys.argv[2]
 max_number_of_validation_files = sys.argv[3]
 combined_file_name = sys.argv[4]
+yolo_version = sys.argv[5]
 upload_to_google_folder_path = "upload_these_files_to_google_drive"
 
 # #move into OIDv4_ToolKit
@@ -32,4 +33,4 @@ shutil.make_archive(upload_to_google_folder_path + "/test", "zip", "./Scripts/OI
 
 # moving back into scripts folder so that the custom files can continue to be written
 os.chdir("Scripts")
-os.system("python3 create-custom-training-files.py " + class_list_length)
+os.system("python3 create-custom-training-files.py " + class_list_length + " " + yolo_version)

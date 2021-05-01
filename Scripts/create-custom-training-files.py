@@ -2,6 +2,7 @@ import os
 import sys
 
 class_list_length = sys.argv[1]
+yolo_version = sys.argv[2]
 new_filter_number = 0
 new_class_number = 0
 
@@ -13,7 +14,7 @@ with open('obj.data', 'w') as f:
   f.write("train = data/train.txt\n")
   f.write("valid = data/test.txt\n")
   f.write("names = data/obj.names\n")
-  f.write("backup = /mydrive/yolov4/backup\n")
+  f.write("backup = /mydrive/yolov" + yolo_version + "/backup\n")
 
 new_class_number = int(class_list_length)
 new_filter_number = (new_class_number + 5) * 3
