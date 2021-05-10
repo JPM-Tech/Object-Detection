@@ -1,7 +1,6 @@
 import fileinput
 import os
 import sys
-# import pathlib
 
 data_located_at = sys.argv[1]
 training_to_be_done = sys.argv[2]

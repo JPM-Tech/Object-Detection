@@ -69,11 +69,12 @@ elif question_one == '7':
   print("[ 4 ] I want to train with Yolo v4 (the version that you began training with).")
   yolo_version = input("Enter one of the numbers above and press enter: ")
   os.chdir("./Scripts/Functions-For-TensorFlow-and-TensorFlow-Lite-Model")
-  # run the code to test the image
 
-  # make sure the checkpoints/custom-416 file is there
-  os.system("python3 detect.py --weights ./checkpoints/custom-416 --size 416 --model yolov" + yolo_version + " --images " + path_to_image.rstrip())
-
+  if os.path.exists("checkpoints/custom-416"):
+    # run the code to test the image
+    os.system("python3 detect.py --weights ./checkpoints/custom-416 --size 416 --model yolov" + yolo_version + " --images " + path_to_image.rstrip())
+  else:
+    print("Could not find the file for the model")
 # Question 3 - (Answered 1 & 1)
 # start running the code to train a model locally from data I already have
 # (Answered 1 & 2)
