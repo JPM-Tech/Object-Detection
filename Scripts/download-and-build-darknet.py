@@ -20,5 +20,8 @@ os.system("wget https://pjreddie.com/media/files/yolov3.weights")
 # get pretrained weights for darknet for Yolov4
 os.system("wget https://github.com/AlexeyAB/darknet/releases/download/darknet_yolo_v3_optimal/yolov4.weights")
 # Get tf-lite weight for yolov3
-# os.system("wget ")
-# Already include the weights for yolov4-tiny in the darknet repo
+# os.system("wget https://github.com/AlexeyAB/darknet/releases/download/darknet_yolo_v3_optimal/yolov3.weights")
+# Get tf-lite weights for yolov4
+os.system("wget https://github.com/AlexeyAB/darknet/releases/download/darknet_yolo_v4_pre/yolov4-tiny.weights")
+
+# TODO: Download the yolo tiny weights for creating a tf-lite model
