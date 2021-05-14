@@ -73,6 +73,8 @@ elif question_one == '7':
   if os.path.exists("checkpoints/custom-416"):
     # run the code to test the image
     os.system("python3 detect.py --weights ./checkpoints/custom-416 --size 416 --model yolov" + yolo_version + " --images " + path_to_image.rstrip())
+    # from  yolov3 in the cloud video
+    # os.system("!./darknet detector test data/obj.data cfg/yolov3_custom.cfg /mydrive/yolov3/backup/yolov3_custom_last.weights /mydrive/images/safari.jpg -thresh 0.3")
   else:
     print("Could not find the file for the model")
 # Question 3 - (Answered 1 & 1)
