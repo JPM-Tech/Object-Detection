@@ -37,7 +37,7 @@ for each_yolo_file in os.listdir(folder_holding_yolo_files):
 
       # Start the XML file
       with open('XML' + os.sep + each_yolo_file.replace('txt', 'xml'), 'w') as f:
-        f.write('<annotation verified="yes">\n')
+        f.write('<annotation>\n')
         f.write('\t<folder>XML</folder>\n')
         f.write('\t<filename>' + image_name + '</filename>\n')
         f.write('\t<path>' + os.getcwd() + os.sep + image_name + '</path>\n')
@@ -91,7 +91,7 @@ for each_yolo_file in os.listdir(folder_holding_yolo_files):
               f.write('\t\t<name>' + object_name + '</name>\n')
               f.write('\t\t<pose>Unspecified</pose>\n')
               f.write('\t\t<truncated>0</truncated>\n')
-              f.write('\t\t<difficult>1</difficult>\n')
+              f.write('\t\t<difficult>0</difficult>\n')
               f.write('\t\t<bndbox>\n')
               f.write('\t\t\t<xmin>' + x_min + '</xmin>\n')
               f.write('\t\t\t<ymin>' + y_min + '</ymin>\n')
