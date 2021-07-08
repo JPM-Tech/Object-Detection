@@ -103,3 +103,9 @@ for each_yolo_file in os.listdir(folder_holding_yolo_files):
         # Close the annotation tag once all the objects have been written to the file
         f.write('</annotation>\n')
         f.close() # Close the file
+
+# Check to make sure the sprite file is now in the folder
+if os.path.exists("XML"):
+  print("Conversion complete")
+else:
+  print("There was a problem converting the files")
