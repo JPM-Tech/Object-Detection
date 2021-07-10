@@ -79,41 +79,67 @@ def xml_to_csv(path):
   """
 
   xml_list = []
-  # regex_for_filename = re.compile('<filename>(.*)</filename>')
-  # regex_for_width = re.compile('<width>(.*)</width>')
-  # regex_for_height = re.compile('<height>(.*)</height>')
-  # regex_for_object = re.compile('<object>(.*)</object>')
-  # regex_for_name = re.compile('<name>(.*)</name>')
-  # regex_for_xmin = re.compile('<xmin>(.*)</xmin>')
-  # regex_for_ymin = re.compile('<ymin>(.*)</ymin>')
-  # regex_for_xmax = re.compile('<xmax>(.*)</xmax>')
-  # regex_for_ymax = re.compile('<ymax>(.*)</ymax>')
+  regex_for_object = re.compile('<object>.*?</object>')
+  regex_for_filename = re.compile('<filename>(.*?)</filename>')
+  regex_for_ymin = re.compile('<ymin>(.*?)</ymin>')
+  regex_for_width = re.compile('<width>(.*?)</width>')
+  regex_for_height = re.compile('<height>(.*?)</height>')
+  regex_for_object_name = re.compile('<name>(.*?)</name>')
+  regex_for_xmin = re.compile('<xmin>(.*?)</xmin>')
+  regex_for_ymin = re.compile('<ymin>(.*?)</ymin>')
+  regex_for_xmax = re.compile('<xmax>(.*?)</xmax>')
+  regex_for_ymax = re.compile('<ymax>(.*?)</ymax>')
 
-  # for each_file in os.listdir(path):
-  #   if each_file.endswith("xml"):
-        # Get the contents of each file
-  #     # Open and parse the file for the specific keys that we are looking for
+  for each_file in os.listdir(path):
+    if each_file.endswith("xml"):
+      text_from_file = ""
 
-  for xml_file in glob.glob(path + '/*.xml'):
-    tree = ET.parse(xml_file)
-    root = tree.getroot()
-    for member in root.findall('object'):
-      value = (root.find('filename').text,
-                int(root.find('size')[0].text),
-                int(root.find('size')[1].text),
-                member[0].text,
-                int(member[4][0].text),
-                int(member[4][1].text),
-                int(member[4][2].text),
-                int(member[4][3].text)
-              )
-      print(member[0].text)
-      xml_list.append(value)
-  print(xml_list)
+      with open(path + os.path.sep + each_file, 'r') as f:
+        text_from_file = f.read()
+        
+      # put all text on one line so it is easier to search
+      text_from_file = text_from_file.replace("\n", "")
+      array_of_objects_in_file = regex_for_object.findall(text_from_file)
+
+      # parse the file to get the specific keys that we are looking for
+      for each_object in array_of_objects_in_file:
+        filename = regex_for_filename.search(text_from_file).group(1)
+        width = int(regex_for_width.search(text_from_file).group(1))
+        height = int(regex_for_height.search(text_from_file).group(1))
+        object_name = regex_for_object_name.search(each_object).group(1)
+        xmin = int(regex_for_xmin.search(each_object).group(1))
+        ymin = int(regex_for_ymin.search(each_object).group(1))
+        xmax = int(regex_for_xmax.search(each_object).group(1))
+        ymax = int(regex_for_ymax.search(each_object).group(1))
+        value = (filename, width, height, object_name, xmin, ymin, xmax, ymax)
+        xml_list.append(value)
+
   column_name = ['filename', 'width', 'height',
                   'class', 'xmin', 'ymin', 'xmax', 'ymax']
   xml_df = pd.DataFrame(xml_list, columns=column_name)
   return xml_df
+  
+# This is from the original google code, it is fast, but not robust.
+# If the file it is parsing is not setup exactly as expected, the script fails.
+# I am commenting this out in favor of making the parser more friendly to the end user.
+  # for xml_file in glob.glob(path + '/*.xml'):
+  #   tree = ET.parse(xml_file)
+  #   root = tree.getroot()
+  #   for member in root.findall('object'):
+  #     value = (root.find('filename').text,
+  #               int(root.find('size')[0].text),
+  #               int(root.find('size')[1].text),
+  #               member[0].text,
+  #               int(member[4][0].text),
+  #               int(member[4][1].text),
+  #               int(member[4][2].text),
+  #               int(member[4][3].text)
+  #             )
+  #     xml_list.append(value)
+  # column_name = ['filename', 'width', 'height',
+  #                 'class', 'xmin', 'ymin', 'xmax', 'ymax']
+  # xml_df = pd.DataFrame(xml_list, columns=column_name)
+  # return xml_df
 
 
 def class_text_to_int(row_label):
