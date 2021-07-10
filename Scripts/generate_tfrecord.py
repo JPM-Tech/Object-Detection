@@ -79,10 +79,20 @@ def xml_to_csv(path):
   """
 
   xml_list = []
+  # regex_for_filename = re.compile('<filename>(.*)</filename>')
+  # regex_for_width = re.compile('<width>(.*)</width>')
+  # regex_for_height = re.compile('<height>(.*)</height>')
+  # regex_for_object = re.compile('<object>(.*)</object>')
+  # regex_for_name = re.compile('<name>(.*)</name>')
+  # regex_for_xmin = re.compile('<xmin>(.*)</xmin>')
+  # regex_for_ymin = re.compile('<ymin>(.*)</ymin>')
+  # regex_for_xmax = re.compile('<xmax>(.*)</xmax>')
+  # regex_for_ymax = re.compile('<ymax>(.*)</ymax>')
+
   # for each_file in os.listdir(path):
   #   if each_file.endswith("xml"):
+        # Get the contents of each file
   #     # Open and parse the file for the specific keys that we are looking for
-  #     yolo_array = re.split("\s", each_file.rstrip())
 
   for xml_file in glob.glob(path + '/*.xml'):
     tree = ET.parse(xml_file)
@@ -97,6 +107,7 @@ def xml_to_csv(path):
                 int(member[4][2].text),
                 int(member[4][3].text)
               )
+      print(member[0].text)
       xml_list.append(value)
   print(xml_list)
   column_name = ['filename', 'width', 'height',
