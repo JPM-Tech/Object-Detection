@@ -16,6 +16,8 @@ The script will ask you for the path to the folder that holds both the images an
 
 It will also ask for the path to the class names. This file is usally named something like "classes.txt" or "obj.names"
 
+On a mac, the easiest way of getting the file path is by dragging and droping the folder and file onto the terminal window when prompted for each.
+
 Once the script has run, it will create a new folder in the same directory that holds the images that is called "XML". A new folder is created to prevent any issues where a program like "LabelImg" may have trouble firguring out what format to save any newly labeled images in.
 
 Running the following command will run the script and from there, start converting your files:
